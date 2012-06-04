@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>FoosMan 2012</title>
+        <title>FoosMan</title>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
         <link rel="stylesheet" href="resources/css/styles.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -15,36 +15,29 @@
     <body onload="init()">
         <div data-role="page" id="page1">
             <div data-theme="a" data-role="header">
-                <h5 onclick="display('main')">
-                    FoosMan 2012
-                </h5>
+                <h5 onclick="display('main')">FoosMan 2012</h5>
             </div>
 			
             <div data-role="content" id="main">
-                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
+                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8; margin-left: auto; margin-right: auto;">
                     <img src="resources/images/foos.png" alt="FoosMan 2012" width="288" height="100"  />
                 </div>
                 
-                <div style="display: none;"><p>Logged In As: Paul - <a href="#" onclick="logout()">Logout</a></p></div>
+                <div id="loggedInUser" style="display: none;"><p>Logged In As: </p></div>
                 
-                <a data-role="button" data-transition="fade" data-theme="b" href="#" onclick="display('registration')">
-                    Register
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="#">
-                    Login
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="#" onclick="listAllUsers(); display('listAll');">
-                    Show All Users
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="page1">
-                    View Table
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="page1">
-                    Update Results
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="page1">
-                    Administration
-                </a>
+                <div class="ui-grid-a" id="loginButtons">
+                    <div class="ui-block-a">
+                        <button id="registrationButton" type="button" data-theme="b" onclick="display('registration')">Register</button>
+                    </div>
+                    <div class="ui-block-b">
+                        <button id="loginButton" type="button" data-theme="b">Login</button>
+                    </div>
+                </div>
+                <button type="button" data-theme="b" onclick="listAllUsers(); display('listAll');">Show All Users</button>
+                <button type="button" data-theme="b">View Table</button>
+                <button type="button" data-theme="b">Update Results</button>
+                <button type="button" data-theme="b" onclick="">Administration</button>
+                <button id="logoutButton" type="button" data-theme="b" style="display: none;" onclick="logout()">Logout</button>
             </div>
 			
 			
@@ -52,67 +45,50 @@
                 <div>
                     Please enter your details below...
                 </div>
-                <form action="">
+                
+                <form>
                     <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup">
-                            <label for="textinput1">
+                            <label for="name">
                                 Name:
                             </label>
-                            <input id="textinput1" placeholder="Paul" value="" type="text" />
+                            <input id="name" placeholder="Paul" value="" type="text" />
                         </fieldset>
                     </div>
+                    
                     <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup">
-                            <label for="textinput2">
+                            <label for="email">
                                 Email Address:
                             </label>
-                            <input id="textinput2" placeholder="username@example.com" value="" type="email" />
+                            <input id="email" placeholder="username@example.com" value="" type="email" />
                         </fieldset>
                     </div>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a">
-						<div data-role="fieldcontain">
-							<fieldset data-role="controlgroup">
-								<label for="toggleswitch1">
-									Notifications?
-								</label>
-								<select name="toggleswitch1" id="toggleswitch1" data-theme="b" data-role="slider" data-mini="true">
-									<option value="off">
-										No
-									</option>
-									<option value="on">
-										Yes
-									</option>
-								</select>
-							</fieldset>
-						</div>
-                        </div>
-                        <div class="ui-block-b">
+                    
                     <div data-role="fieldcontain">
-                        <label for="selectmenu1">
+                        <label for="ranking">
                             Ranking:
                         </label>
-                        <select name="selectmenu1" id="selectmenu1" data-theme="b" data-mini="true">
+                        <select name="ranking" id="ranking" data-theme="b" data-mini="true">
                             <option value="1">
                                 1 (Beginner)
                             </option>
                             <option value="2">
                                 2 (Improver)
                             </option>
-                            <option value="">
+                            <option value="3">
                                 3 (Average)
                             </option>
-                            <option value="">
+                            <option value="4">
                                 4 (Very Good)
                             </option>
-                            <option value="">
-                                5 (Excellent)
+                            <option value="5">
+                                5 (Expert)
                             </option>
                         </select>
                     </div>
-                        </div>
-                    </div>
-                    <input type="submit" data-theme="b" value="Submit" onclick="registerUser()" />
+
+                    <button type="button" data-theme="b" onclick="registerUser()">Submit</button>
                 </form>
             </div>
 			
