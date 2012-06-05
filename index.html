@@ -3,125 +3,145 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>FoosMan 2012</title>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>FoosMan</title>
+
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
         <link rel="stylesheet" href="resources/css/styles.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-		<script src="resources/js/common.js"></script>
         <link rel="icon" type="image/png" href="favicon.png" />
         <link rel="apple-touch-icon" href="iphone_icon.png" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+        <script src="resources/js/common.js"></script>
     </head>
+
     <body onload="init()">
-        <div data-role="page" id="page1">
-            <div data-theme="a" data-role="header">
-                <h5 onclick="display('main')">
-                    FoosMan 2012
-                </h5>
+
+        <div data-role="page" data-theme="b" id="main">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
             </div>
-			
-            <div data-role="content" id="main">
-                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
-                    <img src="resources/images/foos.png" alt="FoosMan 2012" width="288" height="100"  />
+
+            <div data-role="content">
+                <div style="width: 288px; margin-left: auto; margin-right: auto;">
+                    <img src="resources/images/foos.png" alt="FoosMan Logo" width="288" height="100" style="border: 1px solid #b8b8b8;" />
                 </div>
-                
-                <div style="display: none;"><p>Logged In As: Paul - <a href="#" onclick="logout()">Logout</a></p></div>
-                
-                <a data-role="button" data-transition="fade" data-theme="b" href="#" onclick="display('registration')">
-                    Register
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="#">
-                    Login
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="#" onclick="listAllUsers(); display('listAll');">
-                    Show All Users
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="page1">
-                    View Table
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="page1">
-                    Update Results
-                </a>
-                <a data-role="button" data-transition="fade" data-theme="b" href="page1">
-                    Administration
-                </a>
+
+                <div id="loggedInUser" style="display: none;"><p>User: </p></div>
+
+                <div class="ui-grid-a" id="loginButtons">
+                    <div class="ui-block-a">
+                        <a data-role="button" href="#registration" id="registrationButton">Register</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-role="button" href="#login" id="loginButton">Login</a>
+                    </div>
+                </div>
+                <a data-role="button" href="#listAll" onclick="listAllUsers()">Show All Users</a>
+                <a data-role="button" href="#viewTable">View Table</a>
+                <a data-role="button" href="#updateResults">Update Results</a>
+                <a data-role="button" data-rel="dialog" href="#admin">Administration</a>
+                <button id="logoutButton" type="button" onclick="logout()">Logout</button>
             </div>
-			
-			
-            <div data-role="content" id="registration" style="display: none;">
-                <div>
-                    Please enter your details below...
-                </div>
-                <form action="">
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="registration">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <div><p>Please enter your details below...</p></div>
+
+                <form>
                     <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup">
-                            <label for="textinput1">
-                                Name:
-                            </label>
-                            <input id="textinput1" placeholder="Paul" value="" type="text" />
+                            <label for="name">Name:</label>
+                            <input id="name" placeholder="Paul" value="" type="text" />
                         </fieldset>
                     </div>
+
                     <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup">
-                            <label for="textinput2">
-                                Email Address:
-                            </label>
-                            <input id="textinput2" placeholder="username@example.com" value="" type="email" />
+                            <label for="email">Email Address:</label>
+                            <input id="email" placeholder="username@example.com" value="" type="email" />
                         </fieldset>
                     </div>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a">
-						<div data-role="fieldcontain">
-							<fieldset data-role="controlgroup">
-								<label for="toggleswitch1">
-									Notifications?
-								</label>
-								<select name="toggleswitch1" id="toggleswitch1" data-theme="b" data-role="slider" data-mini="true">
-									<option value="off">
-										No
-									</option>
-									<option value="on">
-										Yes
-									</option>
-								</select>
-							</fieldset>
-						</div>
-                        </div>
-                        <div class="ui-block-b">
+
                     <div data-role="fieldcontain">
-                        <label for="selectmenu1">
-                            Ranking:
-                        </label>
-                        <select name="selectmenu1" id="selectmenu1" data-theme="b" data-mini="true">
-                            <option value="1">
-                                1 (Beginner)
-                            </option>
-                            <option value="2">
-                                2 (Improver)
-                            </option>
-                            <option value="">
-                                3 (Average)
-                            </option>
-                            <option value="">
-                                4 (Very Good)
-                            </option>
-                            <option value="">
-                                5 (Excellent)
-                            </option>
+                        <label for="ranking">Ranking:</label>
+                        <select name="ranking" id="ranking">
+                            <option value="1">1 (Beginner)</option>
+                            <option value="2">2 (Improver)</option>
+                            <option value="3">3 (Average)</option>
+                            <option value="4">4 (Very Good)</option>
+                            <option value="5">5 (Expert)</option>
                         </select>
                     </div>
-                        </div>
-                    </div>
-                    <input type="submit" data-theme="b" value="Submit" onclick="registerUser()" />
+
+                    <button type="button" onclick="registerUser()">Submit</button>
                 </form>
             </div>
-			
-			
-			<div data-role="content" id="listAll" style="display: none;">
-				<p id="users">Registered Users...</p>
-			</div>
-			
-			
         </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="listAll">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p id="users">Registered Users...</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="login">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="viewTable">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="updateResults">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" data-title="FoosMan - Admin" id="admin">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
     </body>
 </html>
