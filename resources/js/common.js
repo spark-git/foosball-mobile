@@ -5,26 +5,13 @@ var AUTH_TOKEN = "3GDtRfvT36m3GMs2YPXR";
  * Setup the application.
  */
 function init() {
-    //Check if we have a user stored in localstorage
+    //Check if we have a user stored in localstorage...
     if (localStorage.name) {
         $('#loggedInUser').show();
         $('#loginButtons').hide();
         $('#logoutButton').show();
         $('#loggedInUser p').append(localStorage.name);
     }
-}
-
-/**
- * Display the specified page. Hide all other pages.
- */
-function display(pageName) {
-    //Hide all pages...
-    $('#main').hide();
-    $('#registration').hide();
-    $('#listAll').hide();
-
-    //Display specified page...
-    $('#' + pageName).show();  //TODO perhaps add a CSS transition.
 }
 
 /**
@@ -35,10 +22,10 @@ function registerUser() {
     var email = $('#email').val();
     var ranking = $('#ranking').val();
     if (validateRegistrationDetails(name, email, ranking)) {
-        if (persistUser(name, email, ranking)) {
-            init();
-            display("main");
-        }
+        persistUser(name, email, ranking);
+        localStorage.name = name;
+        init();
+        parent.history.back();
     } else {
         alert("Please enter valid registration details.");
     }
@@ -59,14 +46,11 @@ function persistUser(name, email, ranking) {
         },
         dataType: "json",
         success: function(data) {
-            //alert("Successfuly registered " + data.entry.name);
-            //localStorage.user = JSON.stringify(userDetails
-            localStorage.name = name;
-            return true;
+            alert("Successfully registered: " + data.entry.name);
+            //localStorage.user = JSON.stringify(userDetails);
         },
         error: function() {
-            alert("An error occurred while attempting to register the user.");
-            return false;
+            alert("An error occurred while attempting to register.");
         }
     });
 }
@@ -113,6 +97,7 @@ function logout() {
     $('#loggedInUser').hide();
     $('#loginButtons').show();
     $('#logoutButton').hide();
+    alert("You have successfully logged out.");
 }
 
 

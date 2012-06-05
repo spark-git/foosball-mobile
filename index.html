@@ -3,101 +3,145 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <title>FoosMan</title>
+
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
         <link rel="stylesheet" href="resources/css/styles.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-		<script src="resources/js/common.js"></script>
         <link rel="icon" type="image/png" href="favicon.png" />
         <link rel="apple-touch-icon" href="iphone_icon.png" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+        <script src="resources/js/common.js"></script>
     </head>
+
     <body onload="init()">
-        <div data-role="page" id="page1">
-            <div data-theme="a" data-role="header">
-                <h5 onclick="display('main')">FoosMan 2012</h5>
+
+        <div data-role="page" data-theme="b" id="main">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
             </div>
-			
-            <div data-role="content" id="main">
-                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8; margin-left: auto; margin-right: auto;">
-                    <img src="resources/images/foos.png" alt="FoosMan 2012" width="288" height="100"  />
+
+            <div data-role="content">
+                <div style="width: 288px; margin-left: auto; margin-right: auto;">
+                    <img src="resources/images/foos.png" alt="FoosMan Logo" width="288" height="100" style="border: 1px solid #b8b8b8;" />
                 </div>
-                
-                <div id="loggedInUser" style="display: none;"><p>Logged In As: </p></div>
-                
+
+                <div id="loggedInUser" style="display: none;"><p>User: </p></div>
+
                 <div class="ui-grid-a" id="loginButtons">
                     <div class="ui-block-a">
-                        <button id="registrationButton" type="button" data-theme="b" onclick="display('registration')">Register</button>
+                        <a data-role="button" href="#registration" id="registrationButton">Register</a>
                     </div>
                     <div class="ui-block-b">
-                        <button id="loginButton" type="button" data-theme="b">Login</button>
+                        <a data-role="button" href="#login" id="loginButton">Login</a>
                     </div>
                 </div>
-                <button type="button" data-theme="b" onclick="listAllUsers(); display('listAll');">Show All Users</button>
-                <button type="button" data-theme="b">View Table</button>
-                <button type="button" data-theme="b">Update Results</button>
-                <button type="button" data-theme="b" onclick="">Administration</button>
-                <button id="logoutButton" type="button" data-theme="b" style="display: none;" onclick="logout()">Logout</button>
+                <a data-role="button" href="#listAll" onclick="listAllUsers()">Show All Users</a>
+                <a data-role="button" href="#viewTable">View Table</a>
+                <a data-role="button" href="#updateResults">Update Results</a>
+                <a data-role="button" data-rel="dialog" href="#admin">Administration</a>
+                <button id="logoutButton" type="button" onclick="logout()">Logout</button>
             </div>
-			
-			
-            <div data-role="content" id="registration" style="display: none;">
-                <div>
-                    Please enter your details below...
-                </div>
-                
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="registration">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <div><p>Please enter your details below...</p></div>
+
                 <form>
                     <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup">
-                            <label for="name">
-                                Name:
-                            </label>
+                            <label for="name">Name:</label>
                             <input id="name" placeholder="Paul" value="" type="text" />
                         </fieldset>
                     </div>
-                    
+
                     <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup">
-                            <label for="email">
-                                Email Address:
-                            </label>
+                            <label for="email">Email Address:</label>
                             <input id="email" placeholder="username@example.com" value="" type="email" />
                         </fieldset>
                     </div>
-                    
+
                     <div data-role="fieldcontain">
-                        <label for="ranking">
-                            Ranking:
-                        </label>
-                        <select name="ranking" id="ranking" data-theme="b" data-mini="true">
-                            <option value="1">
-                                1 (Beginner)
-                            </option>
-                            <option value="2">
-                                2 (Improver)
-                            </option>
-                            <option value="3">
-                                3 (Average)
-                            </option>
-                            <option value="4">
-                                4 (Very Good)
-                            </option>
-                            <option value="5">
-                                5 (Expert)
-                            </option>
+                        <label for="ranking">Ranking:</label>
+                        <select name="ranking" id="ranking">
+                            <option value="1">1 (Beginner)</option>
+                            <option value="2">2 (Improver)</option>
+                            <option value="3">3 (Average)</option>
+                            <option value="4">4 (Very Good)</option>
+                            <option value="5">5 (Expert)</option>
                         </select>
                     </div>
 
-                    <button type="button" data-theme="b" onclick="registerUser()">Submit</button>
+                    <button type="button" onclick="registerUser()">Submit</button>
                 </form>
             </div>
-			
-			
-			<div data-role="content" id="listAll" style="display: none;">
-				<p id="users">Registered Users...</p>
-			</div>
-			
-			
         </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="listAll">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p id="users">Registered Users...</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="login">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="viewTable">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="updateResults">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
+        <div data-role="page" data-add-back-btn="true" data-theme="b" data-title="FoosMan - Admin" id="admin">
+            <div data-role="header">
+                <h1>FoosMan 2012</h1>
+            </div>
+
+            <div data-role="content">
+                <p>TODO</p>
+            </div>
+        </div>
+
+
     </body>
 </html>
