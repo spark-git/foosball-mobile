@@ -10,7 +10,7 @@ function init() {
         $('#loggedInUser').show();
         $('#loginButtons').hide();
         $('#logoutButton').show();
-        $('#loggedInUser p').append(localStorage.name);
+        $('#loggedInUser p').html("User: " + localStorage.name);
     }
 }
 
@@ -80,12 +80,14 @@ function listAllUsers() {
             names.push('<li>' + user.name + '</li>');
         });
 
-        $('<ul/>', {
-            html: names.join('')
-        }).appendTo('#users'); //TODO don't use append.
+        $('#users').html(names.join(''));
+        $('#users').listview('refresh');
     });
-
 }
+
+$(document).delegate("#listAll", "pagebeforecreate", function() {
+    listAllUsers();
+});
 
 /**
  * TODO remove user info from localstorage, enable register button etc.
@@ -99,6 +101,7 @@ function logout() {
     $('#logoutButton').hide();
     alert("You have successfully logged out.");
 }
+
 
 
 /*

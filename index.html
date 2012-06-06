@@ -39,11 +39,21 @@
                         <a data-role="button" href="#login" id="loginButton">Login</a>
                     </div>
                 </div>
-                <a data-role="button" href="#listAll" onclick="listAllUsers()">Show All Users</a>
+                <a data-role="button" href="#listAll">Show All Users</a>
                 <a data-role="button" href="#viewTable">View Table</a>
-                <a data-role="button" href="#updateResults">Update Results</a>
-                <a data-role="button" data-rel="dialog" href="#admin">Administration</a>
+                <!-- <a data-role="button" href="#updateResults">Update Results</a> -->
+                <!-- <a data-role="button" data-rel="dialog" href="#admin">Administration</a> -->
                 <button id="logoutButton" type="button" onclick="logout()">Logout</button>
+            </div>
+
+            <div data-role="footer" data-position="fixed" data-id="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
+                        <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -56,7 +66,7 @@
             <div data-role="content">
                 <div><p>Please enter your details below...</p></div>
 
-                <form>
+                <form id="regForm" method="POST" action="main">
                     <div data-role="fieldcontain">
                         <fieldset data-role="controlgroup">
                             <label for="name">Name:</label>
@@ -85,6 +95,16 @@
                     <button type="button" onclick="registerUser()">Submit</button>
                 </form>
             </div>
+
+            <div data-role="footer" data-position="fixed" data-id="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
+                        <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
 
@@ -94,7 +114,18 @@
             </div>
 
             <div data-role="content">
-                <p id="users">Registered Users...</p>
+                <p>Registered Users...</p>
+                <ul data-role="listview" id="users"></ul>
+            </div>
+
+            <div data-role="footer" data-position="fixed" data-id="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
+                        <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -107,6 +138,16 @@
             <div data-role="content">
                 <p>TODO</p>
             </div>
+
+            <div data-role="footer" data-position="fixed" data-id="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
+                        <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
 
@@ -118,6 +159,16 @@
             <div data-role="content">
                 <p>TODO</p>
             </div>
+
+            <div data-role="footer" data-position="fixed" data-id="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#viewTable" href="#admin" data-icon="grid" class="ui-btn-active">Table</a></li>
+                        <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
+                        <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
 
@@ -128,6 +179,16 @@
 
             <div data-role="content">
                 <p>TODO</p>
+            </div>
+
+            <div data-role="footer" data-position="fixed" data-id="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#updateResults" href="#admin" data-icon="star" class="ui-btn-active">Update</a></li>
+                        <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
