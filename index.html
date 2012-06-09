@@ -14,7 +14,10 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-        <script src="resources/js/common.js"></script>
+    	<script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    	<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
+    	<script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+     	<script src="resources/js/common.js"></script>
     </head>
 
     <body onload="init()">
@@ -39,11 +42,11 @@
                         <a data-role="button" href="#login" id="loginButton">Login</a>
                     </div>
                 </div>
-                <a data-role="button" href="#listAll">Show All Users</a>
+                <a data-role="button" href="#listAll" id="listAllButton">Show All Users</a>
                 <a data-role="button" href="#viewTable">View Table</a>
                 <!-- <a data-role="button" href="#updateResults">Update Results</a> -->
                 <!-- <a data-role="button" data-rel="dialog" href="#admin">Administration</a> -->
-                <button id="logoutButton" type="button" onclick="logout()">Logout</button>
+                <button id="logoutButton" type="button">Logout</button>
             </div>
 
             <div data-role="footer" data-position="fixed" data-id="footer">
@@ -55,7 +58,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>   
 
 
         <div data-role="page" data-add-back-btn="true" data-theme="b" id="registration">
@@ -205,4 +208,6 @@
 
 
     </body>
+    <script src="resources/js/registeredUsers.js" type="text/javascript"></script>
+    <script src="resources/js/ifoos.js" type="text/javascript"></script>
 </html>
