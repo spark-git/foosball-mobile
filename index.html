@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <a data-role="button" href="#listAll">Show All Users</a>
-                <a data-role="button" href="#viewTable">View Table</a>
+                <a data-role="button" href="#viewFixture">View Fixture List</a>
                 <!-- <a data-role="button" href="#updateResults">Update Results</a> -->
                 <!-- <a data-role="button" data-rel="dialog" href="#admin">Administration</a> -->
                 <button id="logoutButton" type="button" onclick="logout()">Logout</button>
@@ -49,7 +49,7 @@
             <div data-role="footer" data-position="fixed" data-id="footer">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#viewFixture" href="#admin" data-icon="grid">Fixture</a></li>
                         <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
                         <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
                     </ul>
@@ -99,7 +99,7 @@
             <div data-role="footer" data-position="fixed" data-id="footer">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#viewFixture" href="#admin" data-icon="grid">Fixture</a></li>
                         <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
                         <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
                     </ul>
@@ -121,7 +121,7 @@
             <div data-role="footer" data-position="fixed" data-id="footer">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#viewFixture" href="#admin" data-icon="grid">Fixture</a></li>
                         <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
                         <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
                     </ul>
@@ -142,7 +142,7 @@
             <div data-role="footer" data-position="fixed" data-id="footer">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#viewFixture" href="#admin" data-icon="grid">Fixture</a></li>
                         <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
                         <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
                     </ul>
@@ -151,19 +151,39 @@
         </div>
 
 
-        <div data-role="page" data-add-back-btn="true" data-theme="b" id="viewTable">
+        <div data-role="page" data-add-back-btn="true" data-theme="b" id="viewFixture">
             <div data-role="header">
-                <h1>FoosMan 2012</h1>
+                <h1>iFoosball</h1>
             </div>
 
-            <div data-role="content">
-                <p>TODO</p>
-            </div>
+        <div data-role="content">
+            <p>Round 1</p>
+            <ul data-role="listview">
+                <li>
+                    <!--first item -->
+                    <table>
+                        <tr>
+                            <td>Chun Wu</td>
+                            <td>Paul Hitz</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <!-- second item -->
+                    <table>
+                        <tr>
+                            <td>Paul O'Neill</td>
+                            <td>Kevin D'arcy</td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
 
-            <div data-role="footer" data-position="fixed" data-id="footer">
+        <div data-role="footer" data-position="fixed" data-id="footer">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#viewTable" href="#admin" data-icon="grid" class="ui-btn-active">Table</a></li>
+                        <li><a href="#viewFixture" href="#admin" data-icon="grid" class="ui-btn-active">Fixture</a></li>
                         <li><a href="#updateResults" href="#admin" data-icon="star">Update</a></li>
                         <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
                     </ul>
@@ -184,7 +204,7 @@
             <div data-role="footer" data-position="fixed" data-id="footer">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#viewTable" href="#admin" data-icon="grid">Table</a></li>
+                        <li><a href="#viewFixture" href="#admin" data-icon="grid">Fixture</a></li>
                         <li><a href="#updateResults" href="#admin" data-icon="star" class="ui-btn-active">Update</a></li>
                         <li><a href="#admin" data-rel="dialog" href="#admin" data-icon="gear">Admin</a></li>
                     </ul>
