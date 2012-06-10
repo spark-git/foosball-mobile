@@ -85,9 +85,6 @@ function listAllUsers() {
     });
 }
 
-$(document).delegate("#listAll", "pagebeforecreate", function() {
-    listAllUsers();
-});
 
 /**
  * TODO remove user info from localstorage, enable register button etc.
