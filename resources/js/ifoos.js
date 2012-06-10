@@ -6,6 +6,7 @@
         routes: {
         	"" : "homePage",
         	"listAll": "registeredUsers",
+        	"viewFixture": "viewFixture",
         	"*actions" : "defaultRoute",
         },
         
@@ -16,6 +17,10 @@
     	registeredUsers : function() {
     		//alert("reg view route");
 			new RegisteredUserView;
+		},
+		
+		viewFixture : function() {
+			new FixtureView;
 		},
 		
 		homePage : function() {
