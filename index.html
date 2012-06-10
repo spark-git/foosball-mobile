@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <a data-role="button" href="#listAll" id="listAllButton">Show All Users</a>
-                <a data-role="button" href="#viewFixture">View Fixture</a>
+                <a data-role="button" href="#viewFixture">View Fixture List</a>
                 <!-- <a data-role="button" href="#updateResults">Update Results</a> -->
                 <!-- <a data-role="button" data-rel="dialog" href="#admin">Administration</a> -->
                 <button id="logoutButton" type="button">Logout</button>
@@ -159,31 +159,40 @@
                 <h1>iFoosball</h1>
             </div>
 
-        <div data-role="content">
-            <p>Round 1</p>
-            <ul data-role="listview">
-                <li>
-                    <!--first item -->
-                    <table>
-                        <tr>
-                            <td>Chun Wu</td>
-                            <td>Paul Hitz</td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
-                    <!-- second item -->
-                    <table>
-                        <tr>
-                            <td>Paul O'Neill</td>
-                            <td>Kevin D'arcy</td>
-                        </tr>
-                    </table>
-                </li>
-            </ul>
-        </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <li>
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a"><strong>Player 1</strong></div>
+                            <div class="ui-block-b"><strong>Player 2</strong></div>
+                            <div class="ui-block-c"><strong>Winner</strong></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a">Chun Wu</div>
+                            <div class="ui-block-b">Git Hub</div>
+                            <div class="ui-block-c">Chun Wu</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a">Paul Hits</div>
+                            <div class="ui-block-b">Jim Green</div>
+                            <div class="ui-block-c"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a">John White</div>
+                            <div class="ui-block-b">James O'Neill</div>
+                            <div class="ui-block-c">James O'Neill</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-        <div data-role="footer" data-position="fixed" data-id="footer">
+            <div data-role="footer" data-position="fixed" data-id="footer">
                 <div data-role="navbar">
                     <ul>
                         <li><a href="#viewFixture" href="#admin" data-icon="grid" class="ui-btn-active">Fixture</a></li>
