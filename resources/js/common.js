@@ -27,7 +27,7 @@ function registerUser() {
         init();
         parent.history.back();
     } else {
-        alert("Please enter valid registration details.");
+        //alert("Please enter valid registration details.");
     }
 }
 
@@ -46,7 +46,7 @@ function persistUser(name, email, ranking) {
         },
         dataType: "json",
         success: function(data) {
-            alert("Successfully registered: " + data.entry.name);
+            //alert("Successfully registered: " + data.entry.name);
             //localStorage.user = JSON.stringify(userDetails);
         },
         error: function() {
@@ -96,7 +96,7 @@ function logout() {
     $('#loggedInUser').hide();
     $('#loginButtons').show();
     $('#logoutButton').hide();
-    alert("You have successfully logged out.");
+    //alert("You have successfully logged out.");
 }
 
 
