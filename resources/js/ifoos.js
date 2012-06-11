@@ -7,6 +7,7 @@
         	"" : "homePage",
         	"listAll": "registeredUsers",
         	"viewFixture": "viewFixture",
+        	"registration" : "registration",
         	"*actions" : "defaultRoute",
         },
         
@@ -21,6 +22,10 @@
 		
 		viewFixture : function() {
 			new FixtureView;
+		},
+		
+		registration : function() {
+			new RegistrationView;
 		},
 		
 		homePage : function() {
@@ -45,6 +50,7 @@
 		logout : function() {
 			logout();
 		}
+		
 	});
 	
 	// Initiate the router
