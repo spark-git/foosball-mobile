@@ -61,7 +61,7 @@
 				},
 				dataType : "json",
 				success : function(data) {
-					alert("Successfully registered: " + data.entry.name);
+					//alert("Successfully registered: " + data.entry.name);
 					// localStorage.user = JSON.stringify(userDetails);
 				},
 				error : function() {

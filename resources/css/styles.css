@@ -4,8 +4,3 @@
 .text-align-right {
   text-align: right;
 }
-
-/* Remove flicker on Android / WebKit  */
-.ui-page {
-    -webkit-backface-visibility: hidden !important;
-}
