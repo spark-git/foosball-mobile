@@ -1,62 +1,53 @@
-(function() {
+// Router
+var AppRouter = Backbone.Router.extend({
 
-	
-	
-	var AppRouter = Backbone.Controller.extend({
-        routes: {
-        	"" : "homePage",
-        	"listAll": "registeredUsers",
-        	"viewFixture": "viewFixture",
-        	"registration" : "registration",
-        	"*actions" : "defaultRoute",
-        },
-        
-        defaultRoute : function(actions) {
-        	//alert("default route " + actions);
-        },
-        
-    	registeredUsers : function() {
-    		//alert("reg view route");
-			new RegisteredUserView;
-		},
-		
-		viewFixture : function() {
-			new FixtureView;
-		},
-		
-		registration : function() {
-			new RegistrationView;
-		},
-		
-		homePage : function() {
-    		//alert("home view route");
-    		new HomeView;
-		},
-    });
-	
-	window.HomeView = Backbone.View.extend({
+	routes : {
+		"" : "homePage",
+		"listAll" : "listUsers",
+		"viewFixture": "viewFixture",
+		"registration" : "registration",
+	},
 
-		el : $("#main"),
+	homePage : function() {
+		console.log("AppRouter.homePage()");
+		new HomeView;
+	},
 
-		events : {
-			"click #logoutButton" : "logout",
-		},
+	listUsers : function() {
+		console.log("AppRouter.listUsers()");
+		new RegisteredUsersView();
+	},
 
-		initialize : function() {
-			//alert("i init");
-		},
+	viewFixture : function() {
+		console.log("AppRouter.viewFixture()");
+		new FixtureView;
+	},
 
+	registration : function() {
+		console.log("AppRouter.registration()");
+		new RegistrationView;
+	},
 
-		logout : function() {
-			logout();
-		}
-		
-	});
-	
-	// Initiate the router
-    var app_router = new AppRouter;
-    // Start Backbone history a neccesary step for bookmarkable URL's
-    Backbone.history.start();
-    
+});
 
-}());
+window.HomeView = Backbone.View.extend({
+
+	el : $("#main"),
+
+	events : {
+		"click #logoutButton" : "logout",
+	},
+
+	initialize : function() {
+		init();
+	},
+
+	logout : function() {
+		console.log("windowHomeView.logout()");
+		logout();
+	}
+
+});
+
+var app = new AppRouter();
+Backbone.history.start();

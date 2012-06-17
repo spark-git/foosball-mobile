@@ -1,213 +1,249 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <title>FoosMan</title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>FoosMan</title>
 
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-        <link rel="stylesheet" href="resources/css/styles.css" />
-        <link rel="icon" type="image/png" href="favicon.png" />
-        <link rel="apple-touch-icon" href="iphone_icon.png" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+<link rel="stylesheet" href="resources/css/styles.css" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="iphone_icon.png" />
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="resources/js/common.js"></script>
-        <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-        <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
-        <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
-        <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
-    </head>
-
-    <body onload="init()">
-
-        <div data-role="page" data-theme="b" id="main">
-            <div data-role="header">
-                <h1>FoosMan 2012</h1>
-            </div>
-
-            <div data-role="content">
-                <div style="width: 288px; margin-left: auto; margin-right: auto;">
-                    <img src="resources/images/foos.png" alt="FoosMan Logo" width="288" height="100" style="border: 1px solid #b8b8b8;" />
-                </div>
-
-                <div id="loggedInUser" style="display: none;"><p>User: </p></div>
-
-                <div class="ui-grid-a" id="loginButtons">
-                    <div class="ui-block-a">
-                        <a data-role="button" href="#registration" id="registrationButton">Register</a>
-                    </div>
-                    <div class="ui-block-b">
-                        <a data-role="button" href="#login" id="loginButton">Login</a>
-                    </div>
-                </div>
-                <a data-role="button" href="#listAll" id="listAllButton">Show All Users</a>
-                <a data-role="button" href="#viewFixture">View Fixture List</a>
-                <button id="logoutButton" type="button">Logout</button>
-            </div>
-
-            <div data-role="footer" data-position="fixed" data-id="footer">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
-                        <li><a href="#updateResults" data-icon="star">Update</a></li>
-                        <li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<script src="resources/lib/jquery-1.7.1.min.js"></script>
+<script src="resources/lib/underscore-min.js"></script>
+<script src="resources/lib/backbone-min.js"></script>
 
 
-        <div data-role="page" data-add-back-btn="true" data-theme="b" id="registration">
-            <div data-role="header">
-                <h1>FoosMan 2012</h1>
-            </div>
+<script
+	src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+</head>
 
-            <div data-role="content">
-                <div><p>Please enter your details below...</p></div>
+<body>
 
-                <form id="regForm" method="POST" action="main">
-                    <div data-role="fieldcontain">
-                        <fieldset data-role="controlgroup">
-                            <label for="name">Name:</label>
-                            <input id="name" placeholder="Paul" value="" type="text" />
-                        </fieldset>
-                    </div>
+	<div data-role="page" data-theme="b" id="main">
+		<div data-role="header">
+			<h1>FoosMan 2012</h1>
+		</div>
 
-                    <div data-role="fieldcontain">
-                        <fieldset data-role="controlgroup">
-                            <label for="email">Email Address:</label>
-                            <input id="email" placeholder="username@example.com" value="" type="email" />
-                        </fieldset>
-                    </div>
+		<div data-role="content">
+			<div style="width: 288px; margin-left: auto; margin-right: auto;">
+				<img src="resources/images/foos.png" alt="FoosMan Logo" width="288"
+					height="100" style="border: 1px solid #b8b8b8;" />
+			</div>
 
-                    <div data-role="fieldcontain">
-                        <label for="ranking">Ranking:</label>
-                        <select name="ranking" id="ranking">
-                            <option value="1">1 (Beginner)</option>
-                            <option value="2">2 (Improver)</option>
-                            <option value="3">3 (Average)</option>
-                            <option value="4">4 (Very Good)</option>
-                            <option value="5">5 (Expert)</option>
-                        </select>
-                    </div>
+			<div id="loggedInUser" style="display: none;">
+				<p>User:</p>
+			</div>
 
-                    <button type="button" id="submitNewUser" >Submit</button>
-                </form>
-            </div>
+			<div class="ui-grid-a" id="loginButtons">
+				<div class="ui-block-a">
+					<a data-role="button" href="#registration" id="registrationButton">Register</a>
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#login" id="loginButton">Login</a>
+				</div>
+			</div>
+			<a data-role="button" href="#listAll" id="listAllButton">Show All
+				Users</a> <a data-role="button" href="#viewFixture">View Fixture
+				List</a>
+			<button id="logoutButton" type="button">Logout</button>
+		</div>
 
-            <div data-role="footer" data-position="fixed" data-id="footer">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
-                        <li><a href="#updateResults" data-icon="star">Update</a></li>
-                        <li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+		<div data-role="footer" data-position="fixed" data-id="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
+					<li><a href="#updateResults" data-icon="star">Update</a></li>
+					<li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
+	<div data-role="page" data-add-back-btn="true" data-theme="b"
+		id="registration">
+		<div data-role="header">
+			<h1>FoosMan 2012</h1>
+		</div>
 
-        <div data-role="page" data-add-back-btn="true" data-theme="b" id="listAll">
-            <div data-role="header">
-                <h1>FoosMan 2012</h1>
-            </div>
+		<div data-role="content">
+			<div>
+				<p>Please enter your details below...</p>
+			</div>
 
-            <div data-role="content">
-                <p>Registered Users...</p>
-                <ul data-role="listview" id="users"></ul>
-            </div>
+			<form id="regForm" method="POST" action="main">
+				<div data-role="fieldcontain">
+					<fieldset data-role="controlgroup">
+						<label for="name">Name:</label> <input id="name"
+							placeholder="Paul" value="" type="text" />
+					</fieldset>
+				</div>
 
-            <div data-role="footer" data-position="fixed" data-id="footer">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
-                        <li><a href="#updateResults" data-icon="star">Update</a></li>
-                        <li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+				<div data-role="fieldcontain">
+					<fieldset data-role="controlgroup">
+						<label for="email">Email Address:</label> <input id="email"
+							placeholder="username@example.com" value="" type="email" />
+					</fieldset>
+				</div>
 
+				<div data-role="fieldcontain">
+					<label for="ranking">Ranking:</label> <select name="ranking"
+						id="ranking">
+						<option value="1">1 (Beginner)</option>
+						<option value="2">2 (Improver)</option>
+						<option value="3">3 (Average)</option>
+						<option value="4">4 (Very Good)</option>
+						<option value="5">5 (Expert)</option>
+					</select>
+				</div>
 
-        <div data-role="page" data-add-back-btn="true" data-theme="b" id="login">
-            <div data-role="header">
-                <h1>FoosMan 2012</h1>
-            </div>
+				<button type="button" id="submitNewUser">Submit</button>
+			</form>
+		</div>
 
-            <div data-role="content">
-                <p>TODO</p>
-            </div>
-
-            <div data-role="footer" data-position="fixed" data-id="footer">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
-                        <li><a href="#updateResults" data-icon="star">Update</a></li>
-                        <li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-        <div data-role="page" data-add-back-btn="true" data-theme="b" id="viewFixture">
-            <div data-role="header">
-                <h1>iFoosball</h1>
-            </div>
-
-            <div data-role="content">
-                <ul data-role="listview" id="fixture">
-                </ul>
-            </div>
-
-            <div data-role="footer" data-position="fixed" data-id="footer">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#viewFixture" data-icon="grid" class="ui-btn-active">Fixtures</a></li>
-                        <li><a href="#updateResults" data-icon="star">Update</a></li>
-                        <li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div data-role="page" data-add-back-btn="true" data-theme="b" id="updateResults">
-            <div data-role="header">
-                <h1>FoosMan 2012</h1>
-            </div>
-
-            <div data-role="content">
-                <p>TODO</p>
-            </div>
-
-            <div data-role="footer" data-position="fixed" data-id="footer">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
-                        <li><a href="#updateResults" data-icon="star" class="ui-btn-active">Update</a></li>
-                        <li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+		<div data-role="footer" data-position="fixed" data-id="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
+					<li><a href="#updateResults" data-icon="star">Update</a></li>
+					<li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 
-        <div data-role="page" data-add-back-btn="true" data-theme="b" data-title="FoosMan - Admin" id="admin">
-            <div data-role="header">
-                <h1>FoosMan 2012</h1>
-            </div>
+	<div data-role="page" data-add-back-btn="true" data-theme="b"
+		id="listAll">
+		<div data-role="header">
+			<h1>FoosMan 2012</h1>
+		</div>
 
-            <div data-role="content">
-                <p>TODO</p>
-            </div>
-        </div>
+		<div data-role="content">
+			<p>Registered Users...</p>
+			<ul data-role="listview" id="users"></ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
+					<li><a href="#updateResults" data-icon="star">Update</a></li>
+					<li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Templates -->
+	<script type="text/template" id="tpl-user-list-item">
+	<span><%= name %></span>
+	</script>
+
+	<script type="text/template" id="tpl-user-details">
+    <div class="form-left-col">
+     
+        <label>Name:</label>
+        <input type="text" id="name" name="name" value="<%= name %>" required/>
+   		<label>Email:</label>
+ 		<input type="text" id="email" name="email" value="<%= email %>" required/>    
+		<label>Ranking:</label>
+		<input type="text" id="ranking" name="ranking" value="<%= ranking %>" required/>
+    </div>
+
+</script>
+
+	<div data-role="page" data-add-back-btn="true" data-theme="b"
+		id="login">
+		<div data-role="header">
+			<h1>FoosMan 2012</h1>
+		</div>
+
+		<div data-role="content">
+			<p>TODO</p>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
+					<li><a href="#updateResults" data-icon="star">Update</a></li>
+					<li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 
-    </body>
-    <script src="resources/js/registration.js" type="text/javascript"></script>
-    <script src="resources/js/registeredUsers.js" type="text/javascript"></script>
-    <script src="resources/js/match.js" type="text/javascript"></script>
-    <script src="resources/js/ifoos.js" type="text/javascript"></script>
+	<div data-role="page" data-add-back-btn="true" data-theme="b"
+		id="viewFixture">
+		<div data-role="header">
+			<h1>iFoosball</h1>
+		</div>
+
+		<div data-role="content">
+			<ul data-role="listview" id="fixture">
+			</ul>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#viewFixture" data-icon="grid"
+						class="ui-btn-active">Fixtures</a></li>
+					<li><a href="#updateResults" data-icon="star">Update</a></li>
+					<li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div data-role="page" data-add-back-btn="true" data-theme="b"
+		id="updateResults">
+		<div data-role="header">
+			<h1>FoosMan 2012</h1>
+		</div>
+
+		<div data-role="content">
+			<p>TODO</p>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#viewFixture" data-icon="grid">Fixtures</a></li>
+					<li><a href="#updateResults" data-icon="star"
+						class="ui-btn-active">Update</a></li>
+					<li><a href="#admin" data-rel="dialog" data-icon="gear">Admin</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div data-role="page" data-add-back-btn="true" data-theme="b"
+		data-title="FoosMan - Admin" id="admin">
+		<div data-role="header">
+			<h1>FoosMan 2012</h1>
+		</div>
+
+		<div data-role="content">
+			<p>TODO</p>
+		</div>
+	</div>
+
+
+	<!-- JavaScript -->
+	<script src="resources/js/common.js"></script>
+	<script src="resources/js/registeredUsers.js"></script>
+	<script src="resources/js/registration.js"></script>
+	<script src="resources/js/fixture.js"></script>
+	<script src="resources/js/ifoos.js"></script>
+
+</body>
 </html>
