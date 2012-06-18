@@ -19,7 +19,7 @@ var AppRouter = Backbone.Router.extend({
 	},
 
 	viewFixture : function() {
-		console.log("AppRouter.viewFixture()");
+		//console.log("AppRouter.viewFixture()");
 		new FixtureView;
 	},
 
