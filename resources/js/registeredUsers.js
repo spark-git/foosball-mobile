@@ -1,24 +1,21 @@
+USERS_URL = "http://api.storageroomapp.com/accounts/4fc4d3944194625299000002/collections/4fc4d58713756b58f9000016/entries.json?auth_token=3GDtRfvT36m3GMs2YPXR?callback=?"
+
 // User
 window.User = Backbone.Model.extend();
 
-// User Collection
-window.UserCollection = Backbone.Collection
-		.extend({
-			model : User,
-			url : "http://api.storageroomapp.com/accounts/4fc4d3944194625299000002/collections/4fc4d58713756b58f9000016/entries.json?auth_token=3GDtRfvT36m3GMs2YPXR?callback=?",
+// Users
+window.Users = Backbone.Model.extend({
+	urlRoot : USERS_URL,
 
-			findAll : function(callback) {
-				console.log("UserCollection.findAll()");
-				console.log(this.models);
-				_.each(this.models, function(data) {
-					console.log(data);
-					_.each(data.attributes.array.resources, function(user) {
-						console.log(user);
-						callback(user);
-					}, this);
-				}, this);
-			},
-		});
+	findAll : function(callback) {
+		console.log("UserCollection.findAll()");
+		console.log(this.attributes.array.resources);
+		_.each(this.attributes.array.resources, function(user) {
+			console.log(user);
+			callback(user);
+		}, this);
+	},
+});
 
 // Views
 window.UserListView = Backbone.View.extend({
@@ -26,7 +23,7 @@ window.UserListView = Backbone.View.extend({
 	el : $("#users"),
 
 	initialize : function() {
-		this.model.bind("reset", this.render, this);
+		this.model.bind("change", this.render, this);
 	},
 
 	render : function(eventName) {
@@ -60,7 +57,7 @@ window.UserListItemView = Backbone.View.extend({
 window.RegisteredUsersView = Backbone.View.extend({
 
 	initialize : function() {
-		this.userList = new UserCollection();
+		this.userList = new Users();
 		this.userListView = new UserListView({
 			model : this.userList
 		});
@@ -73,6 +70,6 @@ window.RegisteredUsersView = Backbone.View.extend({
 				alert("An error occurred while attempting to read records.");
 			}
 		});
-		//$('#users').html(this.userListView.render().el);
+		// $('#users').html(this.userListView.render().el);
 	},
 });
