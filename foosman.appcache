@@ -1,0 +1,28 @@
+CACHE MANIFEST
+# version: 20120625_B
+
+NETWORK:
+*
+
+CACHE:
+index.html
+favicon.png
+iphone_icon.png
+resources/css/styles.css
+resources/images/foos.png
+resources/images/splash_320x460.png
+resources/images/splash_640x920.png
+resources/js/common.js
+resources/js/fixture.js
+resources/js/ifoos.js
+resources/js/match.js
+resources/js/registeredUsers.js
+resources/js/registration.js
+resources/lib/backbone-min.js
+resources/lib/jquery-1.7.1.min.js
+resources/lib/underscore-min.js
+http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js
+http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js
+http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css
+http://code.jquery.com/mobile/1.1.0/images/icons-18-white.png
+http://code.jquery.com/mobile/1.1.0/images/ajax-loader.gif
