@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.dnb.foosman" version="0.0.1">
+
+	<name>FoosMan</name>
+
+	<description>
+		A simple foosball league management app.
+	</description>
+
+	<author href="http://www.sparkjuice.com" email="hitzp@dnb.com">Paul Hitz, Chun Wu, Jarlath Holleran</author>
+
+	<preference name="fullscreen" value="true" />
+	<preference name="webviewbounce" value="false" />
+	<preference name="permissions" value="none"/>
+
+	<icon src="icon.png" />
+	<gap:splash src="splash.png" />
+</widget>
